@@ -2,7 +2,7 @@ const saveButton = document.getElementById('saveButton');
 const contentEditor = document.getElementById('content-editor');
 
 saveButton.addEventListener('click', async () => {
-    if (!userName) {
+    if (!userName || !accessToken) {
         alert('Please log in first.');
         return;
     }
@@ -10,15 +10,18 @@ saveButton.addEventListener('click', async () => {
     const content = contentEditor.value;
     const repoOwner = 'JetsadaWijit'; // Replace with the repository owner's username
     const repoName = 'test-page'; // Replace with your repository name
-    const branchName = `${userName}`; // New branch name using the user's username
+    const branchName = userName; // New branch name using the user's username
 
     try {
-        // Get main branch reference (master/main)
-        const mainBranchResponse = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/git/ref/heads/master`, {
+        // Get main branch reference (default branch)
+        const mainBranchResponse = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/git/ref/heads/main`, {
             headers: {
                 Authorization: `Bearer ${accessToken}`
             }
         });
+
+        if (!mainBranchResponse.ok) throw new Error('Failed to fetch main branch.');
+
         const mainBranchData = await mainBranchResponse.json();
 
         // Create a new branch
@@ -58,7 +61,7 @@ saveButton.addEventListener('click', async () => {
             body: JSON.stringify({
                 title: 'Pull request for edited content',
                 head: branchName,
-                base: 'master',
+                base: 'main',
                 body: 'This pull request contains edited content made by the user.'
             })
         });
