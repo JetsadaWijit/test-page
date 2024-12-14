@@ -9,7 +9,7 @@ let userName = localStorage.getItem('userName') || null;
 if (githubLoginButton) {
     githubLoginButton.addEventListener('click', () => {
         const clientId = 'Ov23likB7k85PgYxuVH4'; // Replace with your GitHub client ID
-        const redirectUri = encodeURIComponent('https://jetsadawijit.github.io/test-page/callback');
+        const redirectUri = encodeURIComponent('https://jetsadawijit.github.io/test-page/callback'); // Ensure the callback URL matches the URL in your GitHub app configuration
         window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=repo,user`;
     });
 }
