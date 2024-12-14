@@ -3,30 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GitHub Commit & Pull Request</title>
+  <title>GitHub Login and Pull Request</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>GitHub Commit & Pull Request</h1>
-  </header>
-  <main>
-    <div id="editor-container">
-      <label for="branch">Branch Name:</label>
-      <input type="text" id="branch" placeholder="feature-branch-name">
-      
-      <label for="title">Commit Title:</label>
-      <input type="text" id="title" placeholder="Enter commit title" maxlength="50">
-      
+
+  <h1>GitHub Login and Pull Request</h1>
+
+  <div id="auth-section">
+    <button id="login-btn">Login with GitHub</button>
+  </div>
+
+  <div id="form-section" style="display: none;">
+    <p>Welcome, <span id="username"></span>!</p>
+
+    <form id="pr-form">
+      <label for="repo">Repository (owner/repo):</label>
+      <input type="text" id="repo" name="repo" placeholder="owner/repo" required><br>
+
+      <label for="branch">Branch:</label>
+      <input type="text" id="branch" name="branch" placeholder="branch-name" required><br>
+
+      <label for="title">Pull Request Title:</label>
+      <input type="text" id="title" name="title" placeholder="Title of the PR" required><br>
+
       <label for="message">Commit Message:</label>
-      <textarea id="message" placeholder="Enter detailed commit message"></textarea>
-      
-      <button id="submit">Submit Commit & Pull Request</button>
-    </div>
-  </main>
-  <footer>
-    <p>&copy; 2024 GitHub Commit Message Editor</p>
-  </footer>
-  <script src="editor.js"></script>
+      <textarea id="message" name="message" placeholder="Commit message" required></textarea><br>
+
+      <button type="submit" id="create-pr-btn">Create Pull Request</button>
+    </form>
+  </div>
+
+  <script src="utils.js"></script>
+  <script src="app.js"></script>
+
 </body>
 </html>
