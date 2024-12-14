@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Home</title>
 </head>
 <body>
-    <header>
-        <h1>Welcome to the Home Page</h1>
-        <a href="login.html" class="login-button">Login with GitHub</a>
-    </header>
+  <div class="home-container">
+    <h1>Welcome</h1>
 
-    <main>
-        <section id="message-editor">
-            <h2>Editable Message Box</h2>
-            <div id="message-box" contenteditable="false">This is a default message. Click "Edit" to modify it.</div>
-            <button id="edit-button">Edit</button>
-        </section>
+    <!-- Editable Message Box -->
+    <div>
+      <label for="editable-box">Editable Message Box:</label>
+      <div id="editable-box" contenteditable="true" class="editable-box">Click to edit this message</div>
+    </div>
 
-        <section id="commit-message-section">
-            <h2>Commit Message</h2>
-            <input type="text" id="commit-message" placeholder="Enter commit message (Max 72 characters)" maxlength="72">
-            <p id="commit-length">0 / 72</p>
-        </section>
+    <!-- Pull Request Title -->
+    <div>
+      <label for="pr-title">Pull Request Title:</label>
+      <input type="text" id="pr-title" placeholder="Enter pull request title">
+    </div>
 
-        <section id="pull-request-section">
-            <button id="pull-request-button">Make Pull Request</button>
-        </section>
-    </main>
+    <!-- Commit Message -->
+    <div>
+      <label for="commit-message">Commit Message (72 characters max):</label>
+      <textarea id="commit-message" maxlength="72" placeholder="Enter your commit message"></textarea>
+    </div>
 
-    <script src="js/editor.js"></script>
+    <!-- Button to create Pull Request -->
+    <button id="create-pr">Create Pull Request</button>
+  </div>
+  <script src="editor.js"></script>
 </body>
 </html>
