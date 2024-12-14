@@ -1,6 +1,9 @@
 const saveButton = document.getElementById('saveButton');
 const contentEditor = document.getElementById('content-editor');
 
+const accessToken = localStorage.getItem('accessToken');
+const userName = localStorage.getItem('userName');
+
 saveButton.addEventListener('click', async () => {
     if (!userName || !accessToken) {
         alert('Please log in first.');
@@ -8,12 +11,11 @@ saveButton.addEventListener('click', async () => {
     }
 
     const content = contentEditor.value;
-    const repoOwner = 'JetsadaWijit'; // Replace with the repository owner's username
-    const repoName = 'test-page'; // Replace with your repository name
-    const branchName = userName; // New branch name using the user's username
+    const repoOwner = 'JetsadaWijit'; 
+    const repoName = 'test-page';
+    const branchName = userName;
 
     try {
-        // Get main branch reference (default branch)
         const mainBranchResponse = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/git/ref/heads/main`, {
             headers: {
                 Authorization: `Bearer ${accessToken}`
@@ -24,7 +26,6 @@ saveButton.addEventListener('click', async () => {
 
         const mainBranchData = await mainBranchResponse.json();
 
-        // Create a new branch
         await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/git/refs`, {
             method: 'POST',
             headers: {
@@ -37,7 +38,6 @@ saveButton.addEventListener('click', async () => {
             })
         });
 
-        // Create a new file in the new branch
         await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/edited-content.txt`, {
             method: 'PUT',
             headers: {
@@ -46,12 +46,11 @@ saveButton.addEventListener('click', async () => {
             },
             body: JSON.stringify({
                 message: 'Add edited content',
-                content: btoa(content), // Encode content to Base64
+                content: btoa(content),
                 branch: branchName
             })
         });
 
-        // Create a pull request
         await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/pulls`, {
             method: 'POST',
             headers: {

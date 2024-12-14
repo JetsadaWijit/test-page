@@ -1,4 +1,6 @@
 const githubLoginButton = document.getElementById('githubLogin');
+const userHeader = document.getElementById('userHeader');
+
 let accessToken = localStorage.getItem('accessToken') || null;
 let userName = localStorage.getItem('userName') || null;
 
@@ -53,11 +55,23 @@ async function fetchUserInfo() {
         const data = await response.json();
         userName = data.login;
         localStorage.setItem('userName', userName);
-        alert(`Welcome, ${userName}`);
+        updateUserHeader(userName);
     } catch (error) {
         console.error('Error fetching user info:', error);
     }
 }
 
-// Extract token on page load
-window.onload = extractToken;
+// Update the user header from "Login" to the username
+function updateUserHeader(userName) {
+    if (userName) {
+        userHeader.textContent = userName; // Change "Login" to the username
+    }
+}
+
+// Extract token and set user info on page load
+window.onload = () => {
+    extractToken();
+    if (userName) {
+        updateUserHeader(userName);
+    }
+};
