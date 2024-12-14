@@ -4,7 +4,7 @@ let userName = null;
 
 // GitHub Login
 githubLoginButton.addEventListener('click', () => {
-    const clientId = 'your_github_client_id'; // Replace with your GitHub client ID
+    const clientId = 'Ov23likB7k85PgYxuVH4'; // Replace with your GitHub client ID
     const redirectUri = window.location.href;
     window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=repo,user`;
 });
