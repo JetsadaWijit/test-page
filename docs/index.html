@@ -3,22 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GitHub Commit Message Editor</title>
+  <title>GitHub Commit & Pull Request</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>GitHub Commit Message</h1>
+    <h1>GitHub Commit & Pull Request</h1>
   </header>
   <main>
     <div id="editor-container">
+      <label for="branch">Branch Name:</label>
+      <input type="text" id="branch" placeholder="feature-branch-name">
+      
       <label for="title">Commit Title:</label>
       <input type="text" id="title" placeholder="Enter commit title" maxlength="50">
       
       <label for="message">Commit Message:</label>
       <textarea id="message" placeholder="Enter detailed commit message"></textarea>
       
-      <button id="submit">Submit Commit</button>
+      <button id="submit">Submit Commit & Pull Request</button>
     </div>
   </main>
   <footer>
