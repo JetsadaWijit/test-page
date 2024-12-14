@@ -19,7 +19,7 @@ async function extractToken() {
     if (code && !accessToken) {
         try {
             // Exchange the code for an access token
-            const response = await fetch(`https://your-backend-url.com/exchange_token`, {
+            const response = await fetch(`https://jetsadawijit.github.io/test-page/exchange_token`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ code })
