@@ -3,34 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/styles.css">
-  <title>Home</title>
+  <title>GitHub Commit Message Editor</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="home-container">
-    <h1>Welcome</h1>
-
-    <!-- Editable Message Box -->
-    <div>
-      <label for="editable-box">Editable Message Box:</label>
-      <div id="editable-box" contenteditable="true" class="editable-box">Click to edit this message</div>
+  <header>
+    <h1>GitHub Commit Message</h1>
+  </header>
+  <main>
+    <div id="editor-container">
+      <label for="title">Commit Title:</label>
+      <input type="text" id="title" placeholder="Enter commit title" maxlength="50">
+      
+      <label for="message">Commit Message:</label>
+      <textarea id="message" placeholder="Enter detailed commit message"></textarea>
+      
+      <button id="submit">Submit Commit</button>
     </div>
-
-    <!-- Pull Request Title -->
-    <div>
-      <label for="pr-title">Pull Request Title:</label>
-      <input type="text" id="pr-title" placeholder="Enter pull request title">
-    </div>
-
-    <!-- Commit Message -->
-    <div>
-      <label for="commit-message">Commit Message (72 characters max):</label>
-      <textarea id="commit-message" maxlength="72" placeholder="Enter your commit message"></textarea>
-    </div>
-
-    <!-- Button to create Pull Request -->
-    <button id="create-pr">Create Pull Request</button>
-  </div>
+  </main>
+  <footer>
+    <p>&copy; 2024 GitHub Commit Message Editor</p>
+  </footer>
   <script src="editor.js"></script>
 </body>
 </html>
